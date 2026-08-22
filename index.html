@@ -1,1 +1,1788 @@
-<h2>Salam</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Islamic Tasbih Counter – Dhikr & Du'a Tracker</title>
+
+    <!-- ====== SEO Meta Tags ====== -->
+    <meta name="description" content="Track daily dhikr with a beautiful Islamic tasbih counter. Offline, custom phrases, and progress tracking. Download now for Android." />
+    <meta name="keywords" content="tasbih, dhikr, islamic counter, subhanallah, alhamdulillah, allahu akbar, astaghfirullah, dua, prayer beads, misbaha, islam, muslim, quran, ramadan, daily remembrance, offline, privacy, no ads, halal, sadaqah, islamic app" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://ashfaqalizardaristoreinc.github.io/tasbihapp" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Islamic Tasbih Counter – Dhikr & Du'a Tracker" />
+    <meta property="og:description" content="Track daily dhikr with a beautiful Islamic tasbih counter. Offline, custom phrases, and progress tracking." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ashfaqalizardaristoreinc.github.io/tasbihapp" />
+    <meta property="og:image" content="http://ashfaqalizardaristore.co/images/og-image.jpg" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Islamic Tasbih Counter – Dhikr & Du'a Tracker" />
+    <meta name="twitter:description" content="Track daily dhikr with a beautiful Islamic tasbih counter. Offline, custom phrases, and progress tracking." />
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": "Islamic Tasbih Counter",
+            "operatingSystem": "Android",
+            "applicationCategory": "LifestyleApplication",
+            "description": "Track daily dhikr with a beautiful Islamic tasbih counter. Offline, custom phrases, and progress tracking.",
+            "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
+            },
+            "author": {
+                "@type": "Organization",
+                "name": "Ashfaq Ali Zardari Store",
+                "url": "http://ashfaqalizardaristore.co"
+            }
+        }
+    </script>
+
+    <!-- ====== Google Fonts ====== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- ====== Font Awesome ====== -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <style>
+        /* ============================================================
+                   CSS VARIABLES & RESET
+                   ============================================================ */
+        :root {
+            --primary-green: #1B6B3C;
+            --primary-gold: #C9A83E;
+            --primary-dark: #0D1B12;
+            --accent-teal: #2A9D8F;
+            --warm-beige: #F5F0E8;
+            --soft-cream: #FDFBF7;
+            --elegant-navy: #1A2A3A;
+            --text-dark: #1E1E1E;
+            --text-muted: #555555;
+            --text-light: #888888;
+            --white: #FFFFFF;
+            --shadow-sm: 0 4px 20px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 8px 40px rgba(0, 0, 0, 0.10);
+            --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.15);
+            --radius-sm: 12px;
+            --radius-md: 20px;
+            --radius-lg: 28px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --font-arabic: 'Noto Naskh Arabic', 'Amiri', serif;
+        }
+
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--soft-cream);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        img {
+            max-width: 100%;
+            display: block;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ============================================================
+                   UTILITY
+                   ============================================================ */
+        .section-badge {
+            display: inline-block;
+            background: rgba(27, 107, 60, 0.10);
+            color: var(--primary-green);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            padding: 4px 14px;
+            border-radius: 50px;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 12px;
+            line-height: 1.2;
+        }
+
+        .section-subtitle {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            max-width: 560px;
+            margin: 0 auto 40px auto;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--primary-green);
+            color: var(--white);
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 14px 32px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 16px rgba(27, 107, 60, 0.30);
+        }
+        .btn-primary:hover {
+            background: #155a30;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(27, 107, 60, 0.40);
+        }
+        .btn-primary i {
+            font-size: 1.1rem;
+        }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: transparent;
+            color: var(--white);
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 14px 32px;
+            border-radius: 50px;
+            border: 2px solid rgba(255, 255, 255, 0.35);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.10);
+            border-color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .btn-gold {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--primary-gold);
+            color: var(--primary-dark);
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 14px 32px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 16px rgba(201, 168, 62, 0.30);
+        }
+        .btn-gold:hover {
+            background: #b8972f;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(201, 168, 62, 0.40);
+        }
+
+        /* ============================================================
+                   HEADER / NAVIGATION
+                   ============================================================ */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(253, 251, 247, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+            transition: var(--transition);
+        }
+        .header.scrolled {
+            box-shadow: var(--shadow-sm);
+        }
+
+        .header .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--primary-dark);
+        }
+        .logo i {
+            color: var(--primary-gold);
+            font-size: 1.5rem;
+        }
+        .logo span {
+            color: var(--primary-green);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            list-style: none;
+        }
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            transition: var(--transition);
+            position: relative;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-green);
+            transition: var(--transition);
+        }
+        .nav-links a:hover {
+            color: var(--primary-dark);
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        .nav-links a.active {
+            color: var(--primary-green);
+            font-weight: 600;
+        }
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            display: none;
+        }
+        .nav-cta .btn-primary {
+            padding: 10px 24px;
+            font-size: 0.85rem;
+        }
+
+        /* Hamburger */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 4px;
+            background: none;
+            border: none;
+        }
+        .hamburger span {
+            display: block;
+            width: 26px;
+            height: 2.5px;
+            background: var(--primary-dark);
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(7.5px) rotate(45deg);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-7.5px) rotate(-45deg);
+        }
+
+        /* ============================================================
+                   HERO
+                   ============================================================ */
+        .hero {
+            padding: 140px 0 80px;
+            background: linear-gradient(145deg, var(--primary-dark) 0%, #0f2a1a 100%);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(201, 168, 62, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .hero::after {
+            content: '﴿';
+            font-family: 'Noto Naskh Arabic', serif;
+            font-size: 18rem;
+            color: rgba(255, 255, 255, 0.02);
+            position: absolute;
+            bottom: -40px;
+            right: 40px;
+            pointer-events: none;
+            line-height: 1;
+        }
+
+        .hero .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.4rem, 5vw, 3.6rem);
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 8px;
+        }
+        .hero-content h1 .gold {
+            color: var(--primary-gold);
+        }
+        .hero-content .tagline {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.75);
+            max-width: 480px;
+            margin: 12px 0 28px;
+            line-height: 1.7;
+        }
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .hero-buttons .btn-primary {
+            background: var(--primary-gold);
+            color: var(--primary-dark);
+            box-shadow: 0 4px 20px rgba(201, 168, 62, 0.35);
+        }
+        .hero-buttons .btn-primary:hover {
+            background: #b8972f;
+        }
+        .hero-buttons .btn-outline {
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 36px;
+            padding-top: 28px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .hero-stats .stat-item {
+            display: flex;
+            flex-direction: column;
+        }
+        .hero-stats .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-gold);
+        }
+        .hero-stats .stat-label {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.55);
+        }
+
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .app-mockup {
+            width: 100%;
+            max-width: 340px;
+            border-radius: 32px;
+            box-shadow: var(--shadow-lg);
+            background: var(--white);
+            padding: 16px;
+            transform: perspective(1000px) rotateY(-4deg) rotateX(2deg);
+            transition: var(--transition);
+        }
+        .app-mockup:hover {
+            transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
+        }
+        .app-mockup .screen {
+            border-radius: 20px;
+            overflow: hidden;
+            background: var(--soft-cream);
+            aspect-ratio: 9 / 19;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 16px;
+            text-align: center;
+            background: linear-gradient(145deg, #f8f4ee, #ede8df);
+            position: relative;
+        }
+        .app-mockup .screen .mockup-icon {
+            font-size: 3rem;
+            color: var(--primary-green);
+            margin-bottom: 8px;
+        }
+        .app-mockup .screen .mockup-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+        }
+        .app-mockup .screen .mockup-sub {
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+        .app-mockup .screen .mockup-counter {
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: var(--primary-green);
+            margin-top: 12px;
+        }
+        .app-mockup .screen .mockup-progress {
+            width: 80%;
+            height: 4px;
+            background: #e0dcd4;
+            border-radius: 4px;
+            margin-top: 12px;
+            overflow: hidden;
+        }
+        .app-mockup .screen .mockup-progress .bar {
+            width: 68%;
+            height: 100%;
+            background: var(--primary-gold);
+            border-radius: 4px;
+        }
+        .app-mockup .screen .mockup-dots {
+            display: flex;
+            gap: 6px;
+            margin-top: 14px;
+        }
+        .app-mockup .screen .mockup-dots span {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #d5cfc5;
+        }
+        .app-mockup .screen .mockup-dots span.active {
+            background: var(--primary-green);
+            width: 20px;
+            border-radius: 4px;
+        }
+
+        /* ============================================================
+                   FEATURES
+                   ============================================================ */
+        .features {
+            padding: 80px 0;
+            background: var(--white);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .feature-card {
+            background: var(--soft-cream);
+            padding: 32px 24px 28px;
+            border-radius: var(--radius-md);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            text-align: center;
+        }
+        .feature-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+            border-color: rgba(27, 107, 60, 0.10);
+        }
+        .feature-card .icon {
+            width: 64px;
+            height: 64px;
+            background: rgba(27, 107, 60, 0.08);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            font-size: 1.6rem;
+            color: var(--primary-green);
+        }
+        .feature-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 8px;
+        }
+        .feature-card p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* ============================================================
+                   SCREENSHOTS
+                   ============================================================ */
+        .screenshots {
+            padding: 80px 0;
+            background: var(--soft-cream);
+        }
+
+        .screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 24px;
+            margin-top: 20px;
+        }
+
+        .screenshot-item {
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            background: var(--white);
+            aspect-ratio: 9 / 19;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 12px;
+            text-align: center;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+        }
+        .screenshot-item:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+        .screenshot-item .ss-icon {
+            font-size: 2.4rem;
+            color: var(--primary-green);
+            margin-bottom: 8px;
+        }
+        .screenshot-item .ss-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+        }
+        .screenshot-item .ss-desc {
+            font-size: 0.6rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+        .screenshot-item .ss-badge {
+            margin-top: 10px;
+            background: rgba(27, 107, 60, 0.08);
+            padding: 2px 12px;
+            border-radius: 50px;
+            font-size: 0.55rem;
+            font-weight: 600;
+            color: var(--primary-green);
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        /* ============================================================
+                   ABOUT
+                   ============================================================ */
+        .about {
+            padding: 80px 0;
+            background: var(--white);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+        .about-text .company-name {
+            font-weight: 700;
+            color: var(--primary-green);
+        }
+        .about-text .highlight {
+            color: var(--primary-gold);
+            font-weight: 600;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .about-stat-card {
+            background: var(--soft-cream);
+            padding: 20px;
+            border-radius: var(--radius-sm);
+            text-align: center;
+            border: 1px solid rgba(0, 0, 0, 0.03);
+        }
+        .about-stat-card .number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-green);
+        }
+        .about-stat-card .label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        /* ============================================================
+                   CONTACT
+                   ============================================================ */
+        .contact {
+            padding: 80px 0;
+            background: var(--soft-cream);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        .contact-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--primary-dark);
+            margin-bottom: 12px;
+        }
+        .contact-info p {
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            line-height: 1.7;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            margin-bottom: 18px;
+        }
+        .contact-detail .cd-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(27, 107, 60, 0.08);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-green);
+            flex-shrink: 0;
+            font-size: 1rem;
+        }
+        .contact-detail .cd-text {
+            font-size: 0.95rem;
+            color: var(--text-dark);
+        }
+        .contact-detail .cd-text small {
+            display: block;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        .contact-form {
+            background: var(--white);
+            padding: 32px 28px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+        }
+        .contact-form .form-group {
+            margin-bottom: 18px;
+        }
+        .contact-form label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 4px;
+        }
+        .contact-form input,
+        .contact-form textarea,
+        .contact-form select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #e2ddd6;
+            border-radius: var(--radius-sm);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            background: var(--soft-cream);
+            transition: var(--transition);
+            outline: none;
+        }
+        .contact-form input:focus,
+        .contact-form textarea:focus,
+        .contact-form select:focus {
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 3px rgba(27, 107, 60, 0.10);
+            background: var(--white);
+        }
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        .contact-form .btn-primary {
+            width: 100%;
+            justify-content: center;
+        }
+
+        /* ============================================================
+                   FOOTER
+                   ============================================================ */
+        .footer {
+            background: var(--primary-dark);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 48px 0 24px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 32px;
+        }
+
+        .footer-brand .logo {
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+        .footer-brand .logo i {
+            color: var(--primary-gold);
+        }
+        .footer-brand p {
+            font-size: 0.9rem;
+            max-width: 320px;
+            line-height: 1.7;
+        }
+
+        .footer-links h4,
+        .footer-social h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            color: var(--white);
+            margin-bottom: 12px;
+        }
+        .footer-links ul {
+            list-style: none;
+        }
+        .footer-links ul li {
+            margin-bottom: 6px;
+        }
+        .footer-links ul li a {
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+        .footer-links ul li a:hover {
+            color: var(--primary-gold);
+        }
+
+        .footer-social .social-icons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .footer-social .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 50%;
+            transition: var(--transition);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1rem;
+        }
+        .footer-social .social-icons a:hover {
+            background: var(--primary-gold);
+            color: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-size: 0.8rem;
+        }
+        .footer-bottom .legal-links {
+            display: flex;
+            gap: 20px;
+        }
+        .footer-bottom .legal-links a {
+            transition: var(--transition);
+        }
+        .footer-bottom .legal-links a:hover {
+            color: var(--primary-gold);
+        }
+
+        /* ============================================================
+                   MODAL (Privacy / Terms)
+                   ============================================================ */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.50);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+        .modal-overlay.open {
+            display: flex;
+        }
+
+        .modal {
+            background: var(--white);
+            max-width: 700px;
+            width: 100%;
+            max-height: 85vh;
+            border-radius: var(--radius-md);
+            padding: 36px 32px;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: var(--shadow-lg);
+            animation: modalFadeIn 0.3s ease;
+        }
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px) scale(0.96);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .modal-close {
+            position: sticky;
+            top: 0;
+            float: right;
+            background: none;
+            border: none;
+            font-size: 1.6rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: var(--transition);
+            padding: 4px 8px;
+            z-index: 10;
+        }
+        .modal-close:hover {
+            color: var(--primary-dark);
+            transform: rotate(90deg);
+        }
+
+        .modal h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--primary-dark);
+            margin-bottom: 4px;
+        }
+        .modal .modal-date {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .modal h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-top: 20px;
+            margin-bottom: 6px;
+        }
+        .modal p,
+        .modal li {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+        .modal ul {
+            padding-left: 20px;
+            margin: 6px 0 12px;
+        }
+        .modal ul li {
+            margin-bottom: 4px;
+        }
+
+        /* ============================================================
+                   RESPONSIVE
+                   ============================================================ */
+        @media (max-width: 992px) {
+            .hero .container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-content .tagline {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-buttons {
+                justify-content: center;
+            }
+            .hero-stats {
+                justify-content: center;
+            }
+            .hero-visual {
+                order: -1;
+            }
+            .app-mockup {
+                max-width: 260px;
+            }
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 72px;
+                left: 0;
+                width: 100%;
+                background: rgba(253, 251, 247, 0.98);
+                backdrop-filter: blur(12px);
+                flex-direction: column;
+                padding: 24px 0 32px;
+                gap: 16px;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+                transform: translateY(-120%);
+                transition: var(--transition);
+                opacity: 0;
+                pointer-events: none;
+            }
+            .nav-links.open {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: all;
+            }
+            .nav-links a {
+                font-size: 1rem;
+            }
+            .nav-cta {
+                display: block;
+            }
+            .hamburger {
+                display: flex;
+            }
+
+            .hero {
+                padding: 120px 0 60px;
+            }
+            .hero-stats {
+                flex-wrap: wrap;
+                gap: 24px;
+                justify-content: center;
+            }
+            .features-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .screenshots-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+            .footer-bottom .legal-links {
+                justify-content: center;
+            }
+            .modal {
+                padding: 24px 18px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            .screenshots-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .about-stats {
+                grid-template-columns: 1fr 1fr;
+            }
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            .hero-buttons .btn-primary,
+            .hero-buttons .btn-outline {
+                width: 100%;
+                justify-content: center;
+            }
+            .contact-form {
+                padding: 20px 16px;
+            }
+        }
+
+        /* ============================================================
+                   SCROLL ANIMATIONS (simple)
+                   ============================================================ */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ============================================================
+    HEADER
+    ============================================================ -->
+    <header class="header" id="header">
+        <div class="container">
+            <a href="#home" class="logo">
+                <i class="fas fa-star-and-crescent"></i>
+                Tasbih<span>Counter</span>
+            </a>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#screenshots">Screenshots</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li class="nav-cta">
+                    <a href="#download" class="btn-primary" style="padding:10px 24px;font-size:0.85rem;">
+                        <i class="fas fa-download"></i> Download
+                    </a>
+                </li>
+            </ul>
+
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ============================================================
+    HERO
+    ============================================================ -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <span class="section-badge" style="background:rgba(201,168,62,0.15);color:var(--primary-gold);">
+                    <i class="fas fa-dharmachakra" style="margin-right:6px;"></i> Islamic App
+                </span>
+                <h1>
+                    Islamic <br /><span class="gold">Tasbih Counter</span>
+                </h1>
+                <p class="tagline">
+                    Track daily dhikr with a beautiful Islamic tasbih counter.
+                    Offline, custom phrases, and progress tracking.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#download" class="btn-primary">
+                        <i class="fas fa-download"></i> Download Now
+                    </a>
+                    <a href="#features" class="btn-outline">
+                        <i class="fas fa-arrow-right"></i> Explore Features
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">8+</span>
+                        <span class="stat-label">Pre‑loaded Dhikr</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Offline &amp; Private</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">0</span>
+                        <span class="stat-label">Ads &amp; Trackers</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="app-mockup">
+                    <div class="screen">
+                        <div class="mockup-icon">﷽</div>
+                        <div class="mockup-title">Tasbih Counter</div>
+                        <div class="mockup-sub">سُبْحَانَ اللَّهِ</div>
+                        <div class="mockup-counter">33</div>
+                        <div class="mockup-progress"><div class="bar"></div></div>
+                        <div class="mockup-dots">
+                            <span></span><span class="active"></span><span></span><span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    FEATURES
+    ============================================================ -->
+    <section class="features" id="features">
+        <div class="container text-center">
+            <span class="section-badge">Features</span>
+            <h2 class="section-title">Everything You Need for <br />Consistent Dhikr</h2>
+            <p class="section-subtitle">
+                Designed with a modern, eye‑catching interface and a focus on user experience.
+            </p>
+
+            <div class="features-grid">
+                <div class="feature-card fade-up">
+                    <div class="icon"><i class="fas fa-list-ul"></i></div>
+                    <h3>Pre‑Loaded Tasbih</h3>
+                    <p>Start immediately with Subhanallah, Alhamdulillah, Allahu Akbar, and many more essential dhikr.</p>
+                </div>
+                <div class="feature-card fade-up">
+                    <div class="icon"><i class="fas fa-plus-circle"></i></div>
+                    <h3>Custom Entry</h3>
+                    <p>Add your own phrases with Arabic text, translation, and transliteration. Set custom target counts.</p>
+                </div>
+                <div class="feature-card fade-up">
+                    <div class="icon"><i class="fas fa-hand-pointer"></i></div>
+                    <h3>Smart Digital Counter</h3>
+                    <p>Large tap area with haptic feedback, real‑time progress circle, and completion alerts.</p>
+                </div>
+                <div class="feature-card fade-up">
+                    <div class="icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>Track Your Progress</h3>
+                    <p>View daily totals, overall stats, completed tasbih, and reset individual or all counts.</p>
+                </div>
+                <div class="feature-card fade-up">
+                    <div class="icon"><i class="fas fa-lock"></i></div>
+                    <h3>Fully Offline &amp; Private</h3>
+                    <p>All data stored locally. No internet, no accounts, no data sharing. Your privacy is respected.</p>
+                </div>
+                <div class="feature-card fade-up">
+                    <div class="icon"><i class="fas fa-edit"></i></div>
+                    <h3>Complete Management</h3>
+                    <p>Edit, delete, or mark items as active/inactive. Search and filter by category.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    SCREENSHOTS
+    ============================================================ -->
+    <section class="screenshots" id="screenshots">
+        <div class="container text-center">
+            <span class="section-badge">Gallery</span>
+            <h2 class="section-title">App Screenshots</h2>
+            <p class="section-subtitle">A glimpse of the beautiful, intuitive interface.</p>
+
+            <div class="screenshots-grid">
+                <div class="screenshot-item fade-up">
+                    <div class="ss-icon"><i class="fas fa-home"></i></div>
+                    <div class="ss-label">Home Dashboard</div>
+                    <div class="ss-desc">Overview of active tasbih &amp; daily stats</div>
+                    <div class="ss-badge">#1</div>
+                </div>
+                <div class="screenshot-item fade-up">
+                    <div class="ss-icon"><i class="fas fa-circle-notch"></i></div>
+                    <div class="ss-label">Counter Screen</div>
+                    <div class="ss-desc">Digital counter with progress ring</div>
+                    <div class="ss-badge">#2</div>
+                </div>
+                <div class="screenshot-item fade-up">
+                    <div class="ss-icon"><i class="fas fa-list"></i></div>
+                    <div class="ss-label">My Tasbih List</div>
+                    <div class="ss-desc">Manage pre‑loaded &amp; custom tasbih</div>
+                    <div class="ss-badge">#3</div>
+                </div>
+                <div class="screenshot-item fade-up">
+                    <div class="ss-icon"><i class="fas fa-pen"></i></div>
+                    <div class="ss-label">Add Custom</div>
+                    <div class="ss-desc">Input Arabic text, translation, target</div>
+                    <div class="ss-badge">#4</div>
+                </div>
+                <div class="screenshot-item fade-up">
+                    <div class="ss-icon"><i class="fas fa-hand-holding-heart"></i></div>
+                    <div class="ss-label">Support</div>
+                    <div class="ss-desc">Halal support options (Sadaqah)</div>
+                    <div class="ss-badge">#5</div>
+                </div>
+                <div class="screenshot-item fade-up">
+                    <div class="ss-icon"><i class="fas fa-moon"></i></div>
+                    <div class="ss-label">Dark Mode</div>
+                    <div class="ss-desc">Beautiful theme for night use</div>
+                    <div class="ss-badge">#6</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    ABOUT
+    ============================================================ -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-text fade-up">
+                    <span class="section-badge">About</span>
+                    <h2 class="section-title">Designed with <span style="color:var(--primary-gold);">Islamic Values</span></h2>
+                    <p>
+                        <strong>Islamic Tasbih Counter</strong> is a professional, modern, and user‑friendly app
+                        designed to help you stay consistent with your daily remembrance of Allah.
+                        Whether you're reciting <em>Subhanallah</em>, <em>Alhamdulillah</em>,
+                        <em>Allahu Akbar</em>, or your own personal duas, our app makes counting effortless and rewarding.
+                    </p>
+                    <p>
+                        Developed and maintained by <span class="company-name">Ashfaq Ali Zardari Store</span> —
+                        a company dedicated to creating high‑quality Islamic digital tools.
+                        We believe in <span class="highlight">privacy, simplicity, and spiritual growth</span>.
+                    </p>
+                    <p style="font-style:italic;color:var(--primary-green);margin-top:12px;">
+                        <i class="fas fa-quote-left" style="opacity:0.4;margin-right:6px;"></i>
+                        May Allah accept our efforts and make this app a source of blessing for all who use it. <strong>Ameen.</strong>
+                    </p>
+                </div>
+
+                <div class="about-stats fade-up">
+                    <div class="about-stat-card">
+                        <div class="number">8+</div>
+                        <div class="label">Pre‑loaded Dhikr</div>
+                    </div>
+                    <div class="about-stat-card">
+                        <div class="number">100%</div>
+                        <div class="label">Offline &amp; Private</div>
+                    </div>
+                    <div class="about-stat-card">
+                        <div class="number">0</div>
+                        <div class="label">Ads &amp; Trackers</div>
+                    </div>
+                    <div class="about-stat-card">
+                        <div class="number">1.0</div>
+                        <div class="label">Version</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    CONTACT
+    ============================================================ -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="text-center fade-up">
+                <span class="section-badge">Get in Touch</span>
+                <h2 class="section-title">Contact <span style="color:var(--primary-gold);">Developers</span></h2>
+                <p class="section-subtitle">We'd love to hear from you. Reach out for support, feedback, or duas.</p>
+            </div>
+
+            <div class="contact-grid" style="margin-top:20px;">
+                <div class="contact-info fade-up">
+                    <h3><i class="fas fa-building" style="color:var(--primary-green);margin-right:8px;"></i> Ashfaq Ali Zardari Store</h3>
+                    <p>We are dedicated to creating high‑quality Islamic digital tools. Your feedback helps us improve.</p>
+
+                    <div class="contact-detail">
+                        <div class="cd-icon"><i class="fas fa-envelope"></i></div>
+                        <div class="cd-text">
+                            info@ashfaqalizardaristore.co
+                            <small>General inquiries</small>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="cd-icon"><i class="fas fa-headset"></i></div>
+                        <div class="cd-text">
+                            support@ashfaqalizardaristore.co
+                            <small>Support &amp; bug reports</small>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="cd-icon"><i class="fas fa-code"></i></div>
+                        <div class="cd-text">
+                            developers@ashfaqalizardaristore.co
+                            <small>Developer contact</small>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="cd-icon"><i class="fas fa-phone"></i></div>
+                        <div class="cd-text">
+                            +92 330 806 0604
+                            <small>WhatsApp / Phone</small>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="cd-icon"><i class="fas fa-globe"></i></div>
+                        <div class="cd-text">
+                            <a href="http://ashfaqalizardaristore.co" target="_blank" style="color:var(--primary-green);font-weight:500;">
+                                ashfaqalizardaristore.co
+                            </a>
+                            <small>Visit our website</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form fade-up">
+                    <form id="contactForm" action="#" method="POST">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" placeholder="Enter your name" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" placeholder="you@example.com" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <select id="subject">
+                                <option value="general">General Inquiry</option>
+                                <option value="support">Support / Bug Report</option>
+                                <option value="feedback">Feedback / Suggestion</option>
+                                <option value="dua">Du'a Request</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" placeholder="Write your message here..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                    <div id="formStatus" style="margin-top:16px;font-weight:600;display:none;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    FOOTER
+    ============================================================ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#home" class="logo">
+                        <i class="fas fa-star-and-crescent"></i>
+                        Tasbih<span>Counter</span>
+                    </a>
+                    <p style="margin-top:8px;">
+                        Track daily dhikr with a beautiful Islamic tasbih counter.
+                        Offline, custom phrases, and progress tracking.
+                    </p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#screenshots">Screenshots</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Connect</h4>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                    <p style="font-size:0.8rem;margin-top:12px;color:rgba(255,255,255,0.4);">
+                        <i class="fas fa-envelope" style="margin-right:6px;"></i>
+                        info@ashfaqalizardaristore.co
+                    </p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <span>&copy; 2026 Ashfaq Ali Zardari Store. All rights reserved.</span>
+                <div class="legal-links">
+                    <a href="#" id="privacyLink">Privacy Policy</a>
+                    <a href="#" id="termsLink">Terms &amp; Conditions</a>
+                    <a href="http://ashfaqalizardaristore.co" target="_blank">Company Website</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================================
+    MODAL: PRIVACY POLICY
+    ============================================================ -->
+    <div class="modal-overlay" id="privacyModal">
+        <div class="modal">
+            <button class="modal-close" id="privacyClose">&times;</button>
+            <h2>Privacy Policy</h2>
+            <div class="modal-date">Last updated: 2026</div>
+
+            <h4>Introduction</h4>
+            <p>
+                Ashfaq Ali Zardari Store ("we", "our", "us") respects your privacy.
+                This Privacy Policy explains how we collect, use, and protect your personal information
+                when you use our Tasbih Counter app.
+            </p>
+
+            <h4>Information We Collect</h4>
+            <ul>
+                <li>No personal data is collected or stored on our servers.</li>
+                <li>All data (tasbih counts, custom entries) is stored locally on your device.</li>
+                <li>We do not use cookies or tracking technologies.</li>
+                <li>No analytics or crash reporting is enabled by default.</li>
+            </ul>
+
+            <h4>How We Use Your Information</h4>
+            <p>
+                Since we do not collect any personal data, there is no use of your information.
+                All app functionality operates entirely offline on your device.
+            </p>
+
+            <h4>Data Security</h4>
+            <p>
+                Your data is stored locally on your device. We recommend you secure your device
+                with a passcode or biometric authentication to protect your data.
+            </p>
+
+            <h4>Third‑Party Services</h4>
+            <p>This app does not use any third‑party services that collect data. No advertisements are displayed.</p>
+
+            <h4>Children's Privacy</h4>
+            <p>This app is suitable for all ages and does not collect any personal information from children or adults.</p>
+
+            <h4>Changes to This Policy</h4>
+            <p>We may update this Privacy Policy from time to time. You are advised to review this page periodically for any changes.</p>
+
+            <h4>Contact Us</h4>
+            <p>
+                If you have any questions about this Privacy Policy, please contact us at
+                <a href="mailto:info@ashfaqalizardaristore.co" style="color:var(--primary-green);">
+                    info@ashfaqalizardaristore.co
+                </a>
+            </p>
+        </div>
+    </div>
+
+    <!-- ============================================================
+    MODAL: TERMS & CONDITIONS
+    ============================================================ -->
+    <div class="modal-overlay" id="termsModal">
+        <div class="modal">
+            <button class="modal-close" id="termsClose">&times;</button>
+            <h2>Terms &amp; Conditions</h2>
+            <div class="modal-date">Last updated: 2026</div>
+
+            <h4>Acceptance of Terms</h4>
+            <p>
+                By downloading and using the Tasbih Counter app ("the App"), you agree to be bound
+                by these Terms &amp; Conditions. If you do not agree, please do not use the App.
+            </p>
+
+            <h4>Description of Service</h4>
+            <p>
+                The App provides a digital tasbih counter for tracking daily dhikr. It includes
+                pre‑loaded Arabic phrases, manual entry, and local data storage. The App operates entirely offline.
+            </p>
+
+            <h4>User Responsibilities</h4>
+            <ul>
+                <li>You are responsible for maintaining the security of your device.</li>
+                <li>You agree to use the App for lawful purposes only.</li>
+                <li>You agree not to misuse the App or attempt to reverse engineer it.</li>
+                <li>You are responsible for backing up your data.</li>
+            </ul>
+
+            <h4>Intellectual Property</h4>
+            <p>
+                The App and its content, including but not limited to text, graphics, and code,
+                are the property of Ashfaq Ali Zardari Store and are protected by copyright laws.
+            </p>
+
+            <h4>Disclaimer of Warranties</h4>
+            <p>
+                The App is provided "as is" without any warranties, express or implied.
+                We do not guarantee that the App will be error‑free or uninterrupted.
+            </p>
+
+            <h4>Limitation of Liability</h4>
+            <p>
+                To the fullest extent permitted by law, Ashfaq Ali Zardari Store shall not be liable
+                for any damages arising out of or in connection with the use of the App.
+            </p>
+
+            <h4>Data Storage</h4>
+            <p>
+                All data is stored locally on your device. We do not have access to your data
+                and are not responsible for data loss due to device failure, deletion, or other causes.
+            </p>
+
+            <h4>Governing Law</h4>
+            <p>These terms shall be governed by the laws of Pakistan.</p>
+
+            <h4>Contact</h4>
+            <p>
+                For any questions regarding these Terms &amp; Conditions, please contact us at
+                <a href="mailto:info@ashfaqalizardaristore.co" style="color:var(--primary-green);">
+                    info@ashfaqalizardaristore.co
+                </a>
+            </p>
+        </div>
+    </div>
+
+    <!-- ============================================================
+    JAVASCRIPT
+    ============================================================ -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            // ---- Hamburger ----
+            const hamburger = document.getElementById('hamburger');
+            const navLinks = document.getElementById('navLinks');
+
+            hamburger.addEventListener('click', function() {
+                this.classList.toggle('active');
+                navLinks.classList.toggle('open');
+            });
+
+            // Close nav on link click (mobile)
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('open');
+                });
+            });
+
+            // ---- Header scroll effect ----
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 30) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // ---- Active nav link on scroll ----
+            const sections = document.querySelectorAll('section[id]');
+            const navLinkItems = document.querySelectorAll('.nav-links a');
+
+            window.addEventListener('scroll', function() {
+                let current = 'home';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 100;
+                    if (window.scrollY >= sectionTop) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                navLinkItems.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+            // ---- Fade-up animations ----
+            const fadeElements = document.querySelectorAll('.fade-up');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.15, rootMargin: '0px 0px -30px 0px' });
+
+            fadeElements.forEach(el => observer.observe(el));
+
+            // ---- Modals ----
+            const privacyModal = document.getElementById('privacyModal');
+            const termsModal = document.getElementById('termsModal');
+            const privacyLink = document.getElementById('privacyLink');
+            const termsLink = document.getElementById('termsLink');
+            const privacyClose = document.getElementById('privacyClose');
+            const termsClose = document.getElementById('termsClose');
+
+            function openModal(modal) {
+                modal.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeModal(modal) {
+                modal.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+
+            privacyLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                openModal(privacyModal);
+            });
+            termsLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                openModal(termsModal);
+            });
+
+            privacyClose.addEventListener('click', function() {
+                closeModal(privacyModal);
+            });
+            termsClose.addEventListener('click', function() {
+                closeModal(termsModal);
+            });
+
+            // Close modal on outside click
+            document.querySelectorAll('.modal-overlay').forEach(overlay => {
+                overlay.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        closeModal(this);
+                    }
+                });
+            });
+
+            // Close on Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    if (privacyModal.classList.contains('open')) closeModal(privacyModal);
+                    if (termsModal.classList.contains('open')) closeModal(termsModal);
+                }
+            });
+
+            // ---- Contact Form ----
+            const contactForm = document.getElementById('contactForm');
+            const formStatus = document.getElementById('formStatus');
+
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const subject = document.getElementById('subject').value;
+                const message = document.getElementById('message').value.trim();
+
+                if (!name || !email || !message) {
+                    formStatus.style.display = 'block';
+                    formStatus.style.color = '#c0392b';
+                    formStatus.textContent = 'Please fill in all required fields.';
+                    return;
+                }
+
+                // Simple email validation
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailPattern.test(email)) {
+                    formStatus.style.display = 'block';
+                    formStatus.style.color = '#c0392b';
+                    formStatus.textContent = 'Please enter a valid email address.';
+                    return;
+                }
+
+                // Build mailto link
+                const to = 'info@ashfaqalizardaristore.co';
+                const body =
+                    `Name: ${name}%0AEmail: ${email}%0ASubject: ${subject}%0A%0AMessage:%0A${message}`;
+                const mailto = `mailto:${to}?subject=${encodeURIComponent('Contact Form: ' + subject)}&body=${body}`;
+
+                // Open email client
+                window.open(mailto, '_blank');
+
+                formStatus.style.display = 'block';
+                formStatus.style.color = 'var(--primary-green)';
+                formStatus.textContent = '✅ Thank you! Your email client has been opened.';
+
+                contactForm.reset();
+
+                // Hide status after 6 seconds
+                setTimeout(() => {
+                    formStatus.style.display = 'none';
+                }, 6000);
+            });
+
+            // ---- Smooth anchor scroll (no jump) ----
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    const target = document.querySelector(targetId);
+                    if (target) {
+                        e.preventDefault();
+                        const headerHeight = document.querySelector('.header').offsetHeight;
+                        const targetPosition = target.getBoundingClientRect().top + window.pageYOffset -
+                            headerHeight - 16;
+                        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+                    }
+                });
+            });
+
+        });
+    </script>
+
+</body>
+</html>
